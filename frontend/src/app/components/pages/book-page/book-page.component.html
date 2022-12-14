@@ -1,0 +1,45 @@
+<app-not-found
+[visible]="!book"
+notFoundMessage="Knjiga nije pronađena"
+></app-not-found>
+
+<div *ngIf = "book" class="container">
+  <img [src]="book.slikaUrl" [alt]="book.naziv"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{book.naziv}}
+      </span>
+    </div>
+    <div class="writers">
+      <span *ngFor = "let writer of book.autor" >
+        {{writer}}
+      </span>
+    </div>
+    <div class="rating">
+      <star-rating
+        [value]="book.ocena/2"
+        [totalstars]="5"
+        checkedcolor="red"
+        uncheckedcolor="black"
+        size="25px"
+        [readonly]="true">
+      </star-rating>
+      <span style="font-size:0.7rem;">
+        Ocena knjige: {{book.ocena}}
+      </span>
+    </div>
+    <div class="genres">
+      <span *ngFor = "let genre of book.zanr">
+        {{genre}}
+      </span>
+    </div>
+    <br/>
+    <div class="description">
+      {{book.opis}}
+    </div>
+    <br/>
+    <button (click)="addToMyBooks()">Zaduži</button>
+  </div>
+</div>

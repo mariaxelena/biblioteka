@@ -1,0 +1,25 @@
+<header>
+  <div class="container">
+    <a routerLink="/" class="logo">Biblioteka</a>
+    <nav>
+      <ul>
+        <li *ngIf="!isAuth">
+          <a routerLink="/prijava">Prijavi se</a>
+        </li>
+        <li *ngIf="isAuth" class="menu-container">
+          <a routerLink="/korisnik">{{user.ime}}</a>
+          <div class="menu">
+            <a routerLink="/profil">Profil</a>
+            <a routerLink="/istorija">Istorija zaduženja</a>
+            <a (click)="logout()">Odjavi se</a>
+          </div>
+        </li>
+        <li>
+          <a routerLink="/moje-knjige">
+            Moje knjige <span *ngIf="isAuth && brojKnjiga">{{brojKnjiga}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

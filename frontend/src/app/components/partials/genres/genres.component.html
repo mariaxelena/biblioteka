@@ -1,0 +1,5 @@
+<div *ngIf="genres">
+  <a *ngFor="let genre of genres" routerLink="/zanr/{{genre.ime}}">
+    {{genre.ime}}({{genre.broj}})
+  </a>
+</div>

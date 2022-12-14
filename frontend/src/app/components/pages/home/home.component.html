@@ -1,0 +1,39 @@
+<app-search></app-search>
+<app-genres *ngIf="isAuth"></app-genres>
+<app-not-found
+[visible]="!knjige || !knjige.length"
+></app-not-found>
+<ul>
+  <li *ngFor="let knjiga of knjige">
+    <a routerLink="/knjiga/{{knjiga.id}}">
+      <img [src]="knjiga.slikaUrl" [alt]="knjiga.naziv">
+      <div class="content">
+        <div class="name">
+            {{knjiga.naziv}}
+        </div>
+        <div class="stars">
+          <star-rating
+          [value]="knjiga.ocena/2"
+          [totalstars]="5"
+          checkedcolor="red"
+          uncheckedcolor="black"
+          size="22px"
+          [readonly]="true">
+          </star-rating>
+        </div>
+        <div class="product-item-footer">
+          <div class="writers">
+            <span *ngFor="let autor of knjiga.autor">
+              {{autor}}
+            </span>
+          </div>
+          <div class="genres">
+            <span *ngFor="let zanr of knjiga.zanr">
+              {{zanr}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>

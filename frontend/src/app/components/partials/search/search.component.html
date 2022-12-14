@@ -1,0 +1,6 @@
+<div>
+  <input #s type="text" placeholder="Pretraži biblioteku"
+  (keyup.enter)="search(s.value)"
+  [value]="searchTerm"/>
+  <button (click)="search(s.value)">Pretraži</button>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="details">
+    <app-title title="Prijava"></app-title>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+      <text-input
+      [control]="fc.username"
+      [showErrorsWhen]="isSubmitted"
+      label="Korisničko ime"
+      placeholder="Unesi korisničko ime">
+      </text-input>
+
+      <text-input
+      [control]="fc.password"
+      [showErrorsWhen]="isSubmitted"
+      type="password"
+      label="Lozinka"
+      placeholder="Unesi lozinku">
+      </text-input>
+
+      <default-button text="Prijavi se"></default-button>
+      <div class="register">
+        Nemaš nalog? &nbsp;
+        <a routerLink="/registracija" [queryParams]="{returnUrl : returnUrl}">
+          Registruj se ovde
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

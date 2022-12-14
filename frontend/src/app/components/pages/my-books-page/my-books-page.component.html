@@ -1,0 +1,36 @@
+<app-title title="Moje knjige" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-not-found
+  [visible]="!isAuth"
+  notFoundMessage="Prijavite se da biste zadužili knjigu!"
+></app-not-found>
+<app-not-found
+  [visible]="isAuth && !zaduzenje.broj"
+  notFoundMessage="Nemate ni jednu zaduženu knjigu!"
+></app-not-found>
+<div *ngIf="isAuth && zaduzenje.broj" class="container">
+  <ul>
+    <li *ngFor="let zaduzenaKnjiga of zaduzenje.zaduzeneKnjige">
+      <div>
+        <img [src]="zaduzenaKnjiga.knjiga.slikaUrl" [alt]="zaduzenaKnjiga.knjiga.naziv"/>
+      </div>
+      <div>
+        <a routerLink="/knjiga/{{zaduzenaKnjiga.knjiga.id}}">{{zaduzenaKnjiga.knjiga.naziv}}</a>
+      </div>
+      <div>
+        <span>Imate još {{zaduzenaKnjiga.period}} dana da vratite knjigu!</span>
+      </div>
+      <div>
+        <button class="return-button" (click)="returnBook(zaduzenaKnjiga.knjiga.id)">
+          Vrati knjigu
+        </button>
+      </div>
+      <div>
+        <button class="postpone-button" (click)="postponeBook(zaduzenaKnjiga.knjiga.id, zaduzenje.zaduzeneKnjige.indexOf(zaduzenaKnjiga))">
+          Odloži vraćanje
+        </button>
+        <br/>
+        <span class="error">{{message[zaduzenje.zaduzeneKnjige.indexOf(zaduzenaKnjiga)]}}</span>
+      </div>
+    </li>
+  </ul>
+</div>

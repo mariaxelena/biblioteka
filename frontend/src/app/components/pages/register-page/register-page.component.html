@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="details">
+    <app-title title="Registracija"></app-title>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <text-input
+      [control]="fc.ime"
+      [showErrorsWhen]="isSubmitted"
+      placeholder="Unesi ime i prezime"
+      label="Ime i prezime"
+      ></text-input>
+
+      <text-input
+      [control]="fc.korime"
+      [showErrorsWhen]="isSubmitted"
+      placeholder="Unesi korisničko ime"
+      label="Korisničko ime"
+      ></text-input>
+
+      <text-input
+      [control]="fc.lozinka"
+      [showErrorsWhen]="isSubmitted"
+      placeholder="Unesi lozinku"
+      label="Lozinka"
+      type="password"
+      ></text-input>
+
+      <text-input
+      [control]="fc.potvrdaLozinke"
+      [showErrorsWhen]="isSubmitted"
+      placeholder="Ponovo unesi lozinku"
+      label="Potvrda lozinke"
+      type="password"
+      ></text-input>
+
+      <text-input
+      [control]="fc.adresa"
+      [showErrorsWhen]="isSubmitted"
+      placeholder="Unesi adresu (ulica i broj, grad)"
+      label="Adresa"
+      ></text-input>
+
+      <default-button text="Registracija"></default-button>
+      <div class="login">
+        Već imaš nalog? &nbsp;
+        <a routerLink="/prijava" [queryParams]="{returnUrl: returnUrl}">
+          Prijavi se ovde
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
